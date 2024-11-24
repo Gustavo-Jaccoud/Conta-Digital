@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank SE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <header class="header">
+      <img src="img/img_logo.png" alt="Logo">
+      <div class="user-info">
+        <span>Olá, Fulano</span>
+        <img src="img/icon_user_.png" alt="User">
+      </div>
+    </header>
+
+    <!-- Resumo da Conta -->
+    <main>
+      <div class="collumn">
+        <div class="summary-box-account">
+          <h3>Conta</h3>
+          <p>R$ <span id="saldo">0.00</span></p>
+        </div>
+        <!-- Anúncio -->
+        <section class="advertisement">
+          <img src="img/img_seguros.png" alt="Seguros para família">
+        </section>
+
+        <section class="actions">
+          <div class="action-box">
+            <img src="img/icon_pix_.png" alt="Área Pix">
+            <button id="area-pix">Área PIX</button>
+          </div>
+          <div class="action-box">
+            <img src="img/icon _dollar_.png" alt="Pagar">
+            <button id="pagar">Pagar</button>
+          </div>
+          <div class="action-box">
+            <img src="img/icon _graph_.png" alt="Investir">
+            <button id="investir">Investir</button>
+          </div>
+        </section>
+
+      </div>
+      <div class="collumn">
+        <div class="summary-box">
+          <h3>Entradas</h3>
+          <p>R$ <span id="entradas">0.00</span></p>
+        </div>
+        <div class="summary-box" style="border-color:#FF7C7C;">
+          <h3>Saídas</h3>
+          <p>R$ <span id="saidas">0.00</span></p>
+        </div>
+
+
+        <section class="transactions" id="transactions">
+          <h3>Últimas Transações</h3>
+          <ul id="lista-transacoes">
+            <p id="nao">Não constam transações</p>
+          </ul>
+        </section>
+        <!-- Área PIX -->
+        <section class="pix-area" id="pix-area" style="display: none;">
+          <h1>Área Pix</h1>
+          <a href="#" onclick="transactions()">
+            <img src="/img/🦆 icon _list rich_.png" alt="">
+            Transações
+          </a>
+          <div class="tabs">
+            <button id="tab-receber" class="ativo">Receber<img src="img\_icon _receber_.png" alt="Receber"></button>
+
+            <button id="tab-transferir">Transferir <img src="img/icon _enviar_.png" alt="Transferir"></button>
+
+            <script>
+              const tabReceber = document.getElementById("tab-receber");
+              const tabTransferir = document.getElementById("tab-transferir");
+
+              // Função para alternar as classes de ativo
+              function ativarTab(tabAtivar, tabDesativar) {
+                tabAtivar.classList.add("ativo");
+                tabDesativar.classList.remove("ativo");
+              }
+
+              // Eventos de clique para os links
+              tabReceber.addEventListener("click", (event) => {
+                event.preventDefault();
+                ativarTab(tabReceber, tabTransferir);
+              });
+
+              tabTransferir.addEventListener("click", (event) => {
+                event.preventDefault();
+                ativarTab(tabTransferir, tabReceber);
+              });
+            </script>
+          </div>
+          <form id="form-receber" style="display: none;">
+            <label>CNPJ/CPF</label>
+            <input type="text" id="receber-cnpj" required>
+            <label>Valor (R$)</label>
+            <input type="number" id="receber-valor" required>
+            <button type="button" id="receber-submit">Receber</button>
+          </form>
+          <form id="form-transferir" style="display: flex;">
+            <label>Chave PIX</label>
+            <input type="text" id="transferir-chave" required>
+            <label>Valor (R$)</label>
+            <input type="number" id="transferir-valor" required>
+            <button type="button" id="transferir-submit">Transferir</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>Gustavo Cauã Jaccoud Ferreira © 2024. Todos os direitos reservados.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
